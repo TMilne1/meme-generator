@@ -10,31 +10,28 @@ const memedList = document.getElementById("memedList")
 
 //------------------------------------------------------
 //EVENT LISTER FUNCTIONS
-function updatePreview(){
-
-}
 
 // EVENT LISTENERS
-inputURL.addEventListener("change", function(){
-    let tempImageElement  = new Image()
+inputURL.addEventListener("change", function () {
+    let tempImageElement = new Image()
     tempImageElement.src = inputURL.value
 
-    tempImageElement.onerror = function(){
-        imagePreview.setAttribute("src","https://reactnativecode.com/wp-content/uploads/2018/01/Error_Img.png");
+    tempImageElement.onerror = function () {
+        imagePreview.setAttribute("src", "https://reactnativecode.com/wp-content/uploads/2018/01/Error_Img.png");
         inputURL.value = ''
         upperMemeText.innerText = "There was an error"
         lowerMemeText.innerText = "trying to load your image"
-    }    
-    tempImageElement.onload = function(){
-        imagePreview.setAttribute( "src",inputURL.value)
+    }
+    tempImageElement.onload = function () {
+        imagePreview.setAttribute("src", inputURL.value)
         upperMemeText.innerText = upper.value
         lowerMemeText.innerText = lower.value
-    } 
+    }
 })
 
 
 
-upper.addEventListener("keyup",  ()=> {
+upper.addEventListener("keyup", () => {
     let message = upper.value
     console.log(message)
     upperMemeText.innerText = message
@@ -42,15 +39,15 @@ upper.addEventListener("keyup",  ()=> {
 
 
 lower.addEventListener("keyup", function () {
-    let message =  lower.value
+    let message = lower.value
     lowerMemeText.innerText = message
 })
 
-submitButton.addEventListener('click', function(event){
+submitButton.addEventListener('click', function (event) {
     event.preventDefault()
 
-    if(!inputURL.value == ''){
-    //factory
+    if (!inputURL.value == '') {
+        //factory
         let memeListItem =
             `
             <div class="preview">
@@ -64,19 +61,19 @@ submitButton.addEventListener('click', function(event){
         memedList.innerHTML += memeListItem
         upper.value = ''
         lower.value = ''
-        inputURL.value=''
+        inputURL.value = ''
 
-    }else{
+    } else {
         alert("please enter all fields")
     }
 
-    
-    
+
+
 })
 //--------------------------
 
-reel.addEventListener("click", function(event){
-    if (event.target.tagName == "BUTTON"){
+reel.addEventListener("click", function (event) {
+    if (event.target.tagName == "BUTTON") {
         console.log(event.target.parentElement)
         event.target.parentElement.remove()
     }
